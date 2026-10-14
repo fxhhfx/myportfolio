@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人主页</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">MyPortfolio</a>
+      <ul class="nav-links">
+        <li><a href="#hero">首页</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">作品</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section id="hero" class="hero">
+    <div class="container hero-content">
+      <p class="hero-greeting">你好，我是</p>
+      <h1 class="hero-name">张三</h1>
+      <p class="hero-title">全栈开发工程师 / 创意开发者</p>
+      <p class="hero-desc">热衷于用代码构建优雅、高效的 Web 应用，专注于前端技术与用户体验。</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">查看作品</a>
+        <a href="#contact" class="btn btn-outline">联系我</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>向下滚动</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">关于我</h2>
+      <div class="about-grid">
+        <div class="about-avatar">
+          <div class="avatar-placeholder">ZS</div>
+        </div>
+        <div class="about-text">
+          <p>我是一名拥有 5 年经验的全栈开发工程师，擅长使用现代 Web 技术栈构建高质量的应用程序。</p>
+          <p>我相信好的代码不仅要能运行，更要易读、易维护。在工作之余，我喜欢研究新技术、写技术博客，也热衷于开源社区。</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">年经验</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="30">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">完成项目</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">技术栈</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <div class="container">
+      <h2 class="section-title">技能</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">&#9001;/&#9002;</div>
+          <h3>前端开发</h3>
+          <p>HTML5 / CSS3 / JavaScript / TypeScript</p>
+          <div class="skill-tags">
+            <span>React</span><span>Vue</span><span>Next.js</span><span>Tailwind</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">&#9881;</div>
+          <h3>后端开发</h3>
+          <p>Node.js / Python / Go</p>
+          <div class="skill-tags">
+            <span>Express</span><span>Django</span><span>PostgreSQL</span><span>Redis</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">&#9729;</div>
+          <h3>DevOps</h3>
+          <p>Docker / CI/CD / 云服务</p>
+          <div class="skill-tags">
+            <span>AWS</span><span>Nginx</span><span>GitHub Actions</span><span>K8s</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">&#9998;</div>
+          <h3>设计 & 其他</h3>
+          <p>UI/UX 设计 / 技术写作</p>
+          <div class="skill-tags">
+            <span>Figma</span><span>Git</span><span>Agile</span><span>SEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section projects">
+    <div class="container">
+      <h2 class="section-title">作品集</h2>
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="web">Web 应用</button>
+        <button class="filter-btn" data-filter="mobile">移动端</button>
+        <button class="filter-btn" data-filter="tool">工具</button>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card" data-category="web">
+          <div class="project-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+            <span class="project-category-label">Web 应用</span>
+          </div>
+          <div class="project-info">
+            <h3>电商平台</h3>
+            <p>全栈电商解决方案，支持商品管理、购物车、在线支付。</p>
+            <div class="project-tech">
+              <span>React</span><span>Node.js</span><span>MongoDB</span>
+            </div>
+            <a href="https://www.alibaba.com" target="_blank" rel="noopener" class="project-link">访问阿里巴巴 &rarr;</a>
+          </div>
+        </div>
+        <div class="project-card" data-category="mobile">
+          <div class="project-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+            <span class="project-category-label">移动端</span>
+          </div>
+          <div class="project-info">
+            <h3>健身追踪 App</h3>
+            <p>跨平台健身记录应用，支持运动数据分析与社交分享。</p>
+            <div class="project-tech">
+              <span>React Native</span><span>Firebase</span><span>Redux</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="tool">
+          <div class="project-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+            <span class="project-category-label">工具</span>
+          </div>
+          <div class="project-info">
+            <h3>Markdown 编辑器</h3>
+            <p>在线 Markdown 编辑器，实时预览、主题切换、导出 PDF。</p>
+            <div class="project-tech">
+              <span>Vue</span><span>CodeMirror</span><span>Electron</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="web">
+          <div class="project-image" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+            <span class="project-category-label">Web 应用</span>
+          </div>
+          <div class="project-info">
+            <h3>任务管理系统</h3>
+            <p>团队协作看板，支持任务分配、进度追踪、实时通知。</p>
+            <div class="project-tech">
+              <span>Next.js</span><span>Prisma</span><span>WebSocket</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="tool">
+          <div class="project-image" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+            <span class="project-category-label">工具</span>
+          </div>
+          <div class="project-info">
+            <h3>API 测试工具</h3>
+            <p>类似 Postman 的轻量 API 调试工具，支持集合管理与环境变量。</p>
+            <div class="project-tech">
+              <span>Electron</span><span>Vue</span><span>SQLite</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-category="mobile">
+          <div class="project-image" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
+            <span class="project-category-label">移动端</span>
+          </div>
+          <div class="project-info">
+            <h3>天气助手</h3>
+            <p>精美天气应用，支持定位、7 日预报、空气质量提醒。</p>
+            <div class="project-tech">
+              <span>Flutter</span><span>Dart</span><span>OpenWeather API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">联系我</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>如果你有任何合作意向或想法，欢迎随时联系我！</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <span class="contact-icon">&#9993;</span>
+              <span>hello@example.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">&#9742;</span>
+              <span>+86 138-0000-0000</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">&#9873;</span>
+              <span>中国 · 北京</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link" title="GitHub">GH</a>
+            <a href="#" class="social-link" title="LinkedIn">IN</a>
+            <a href="#" class="social-link" title="Twitter">TW</a>
+            <a href="#" class="social-link" title="微信">WX</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder=" " required>
+            <label for="name">姓名</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">邮箱</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="5" placeholder=" " required></textarea>
+            <label for="message">留言</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">发送消息</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 MyPortfolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">&uarr;</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
