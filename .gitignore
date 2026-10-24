@@ -2,3 +2,6 @@ node_modules/
 .env
 *.log
 .DS_Store
+novel-writer/data/
+__pycache__/
+*.pyc

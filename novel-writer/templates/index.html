@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小说自动续写</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-left">
+        <h1>小说自动续写</h1>
+        <p class="subtitle">输入大纲，AI 帮你创作精彩故事</p>
+      </div>
+      <div class="header-right">
+        <div class="stats" id="statsBar">
+          <span class="stat-item"><span id="statChapters">0</span> 章</span>
+          <span class="stat-divider">|</span>
+          <span class="stat-item"><span id="statWords">0</span> 字</span>
+        </div>
+        <div class="user-info">
+          <span class="username" id="displayUsername"></span>
+          <button class="btn btn-sm logout-btn" id="logoutBtn" title="退出登录">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- 左侧面板 -->
+      <aside class="sidebar">
+        <!-- 小说信息 -->
+        <div class="panel">
+          <h2>小说信息</h2>
+          <div class="form-row">
+            <label>标题</label>
+            <input type="text" id="novelTitle" placeholder="给你的小说起个名字">
+          </div>
+          <div class="form-row">
+            <label>大纲</label>
+            <textarea id="outline" placeholder="描述故事背景、主要人物、情节走向...&#10;&#10;例如：&#10;这是一个关于未来世界的科幻故事。主角李明是一名普通程序员，某天意外获得了一个能够预测未来的 AI 系统..."></textarea>
+          </div>
+        </div>
+
+        <!-- 生成控制 -->
+        <div class="panel">
+          <h2>创作控制</h2>
+          <div class="form-row">
+            <label>下一章</label>
+            <div class="chapter-input-row">
+              <span class="chapter-label" id="nextChapterLabel">第 1 章</span>
+              <button id="generateBtn" class="btn btn-primary btn-generate">
+                <span class="btn-icon">️</span>
+                生成章节
+              </button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>生成风格</label>
+            <select id="styleSelect">
+              <option value="balanced">均衡（推荐）</option>
+              <option value="detailed">细节丰富</option>
+              <option value="fast">简洁明快</option>
+              <option value="literary">文艺抒情</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="panel actions">
+          <button id="saveBtn" class="btn btn-outline">
+            <span class="btn-icon">💾</span>
+            保存小说
+          </button>
+          <button id="loadBtn" class="btn btn-outline">
+            <span class="btn-icon"></span>
+            加载小说
+          </button>
+        </div>
+
+        <!-- 已保存小说 -->
+        <div class="panel">
+          <h2>我的书架</h2>
+          <div id="novelList" class="novel-list">
+            <p class="empty-text">暂无保存的小说</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 中间：章节列表 -->
+      <div class="chapter-panel">
+        <div class="chapter-panel-header">
+          <h2>章节列表</h2>
+          <span class="chapter-count" id="chapterCountBadge">0 章</span>
+        </div>
+        <div id="chapterList" class="chapter-list">
+          <div class="chapter-empty">
+            <div class="chapter-empty-icon">📚</div>
+            <p>还没有章节</p>
+            <p class="chapter-empty-hint">输入大纲后点击生成</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧：内容展示 -->
+      <main class="content-area">
+        <div class="content-header">
+          <h2 id="contentTitle">章节内容</h2>
+          <div class="content-actions">
+            <button id="copyBtn" class="btn btn-sm" title="复制当前章节">复制</button>
+            <button id="exportBtn" class="btn btn-sm" title="导出全部章节">导出</button>
+            <button id="clearBtn" class="btn btn-sm" title="清空所有内容">清空</button>
+          </div>
+        </div>
+
+        <div id="contentDisplay" class="content-display">
+          <div class="placeholder">
+            <div class="placeholder-icon"></div>
+            <p>输入大纲后点击"生成章节"</p>
+            <p>AI 将为你创作精彩内容</p>
+          </div>
+        </div>
+
+        <div id="loadingIndicator" class="loading-overlay hidden">
+          <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">AI 正在创作中...</p>
+            <p class="loading-hint">通常需要 10-30 秒</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- 加载对话框 -->
+  <div id="loadModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>加载小说</h3>
+      <p class="modal-hint">点击下方的小说即可加载</p>
+      <div id="modalNovelList" class="modal-novel-list"></div>
+      <div class="modal-actions">
+        <button id="cancelLoad" class="btn btn-outline">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 导出对话框 -->
+  <div id="exportModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>导出小说</h3>
+      <p class="modal-hint">选择导出格式</p>
+      <div class="export-options">
+        <button class="btn btn-outline export-btn" data-format="txt">纯文本 (.txt)</button>
+        <button class="btn btn-outline export-btn" data-format="md">Markdown (.md)</button>
+      </div>
+      <div class="modal-actions">
+        <button id="cancelExport" class="btn btn-outline">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
